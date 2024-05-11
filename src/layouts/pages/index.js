@@ -15,9 +15,7 @@ const HomePages = ({ user, status }) => {
       const response = await axios.get(
         "http://localhost:4000/event/get_event/",
         {
-          headers: {
-            "access-control-allow-orgigin": "*",
-          },
+          withCredentials: true,
         }
       );
       const { success, events } = response.data;
