@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <Navbar user={user} status={status} />
-      <Routes>
+      <Routes path="/">
         <Route path="/" element={<HomePages user={user} status={status} />} />
         <Route path="/event">
           <Route
