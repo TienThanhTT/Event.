@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/logo.png";
 import { FaBars } from "react-icons/fa6";
 import { IoIosLogIn, IoMdArrowDropdownCircle } from "react-icons/io";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { appear, fadeDown, fadeIn } from "../../assets/animation/animation";
-import axios from "axios";
+import { fadeDown, fadeIn } from "../../assets/animation/animation";
+
 import { useCookies } from "react-cookie";
 
 const NavData = [
@@ -18,7 +18,7 @@ const NavData = [
 const Navbar = ({ user, status }) => {
   const [openNav, setOpenNav] = useState(false);
   const [openAuth, setOpenAuth] = useState(false);
-  const [cookie, removeCookie] = useCookies([]);
+  const [removeCookie] = useCookies([]);
 
   const openMenu = () => {
     setOpenNav(!openNav);

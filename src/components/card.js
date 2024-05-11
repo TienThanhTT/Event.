@@ -1,4 +1,3 @@
-import Button from "./button";
 import { FaLocationDot, FaClock } from "react-icons/fa6";
 import { RiUserFollowFill } from "react-icons/ri";
 import { fadeUp } from "../assets/animation/animation";

@@ -1,7 +1,7 @@
 import { fadeDown } from "../assets/animation/animation";
 import { motion } from "framer-motion";
 import Button from "./button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
