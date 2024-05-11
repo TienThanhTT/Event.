@@ -3,7 +3,6 @@ import progress from "../../../../assets/manage/create/BannerProgress.png";
 import { motion } from "framer-motion";
 import { fadeDown } from "../../../../assets/animation/animation";
 import { useState } from "react";
-import axios from "axios";
 
 const UPloadImage = ({ handleChange, next }) => {
   const [image, setImage] = useState();

@@ -3,7 +3,7 @@ import UPloadImage from "./components/uploadImage";
 import UploadInformation from "./components/uploadInformation";
 import Review from "./components/review";
 import { FaArrowLeft } from "react-icons/fa6";
-import axios from "axios";
+
 import { useContext } from "react";
 import { AuthContext } from "../../../service/auth/authContext";
 

@@ -5,7 +5,6 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState();
-  const [status, setStatus] = useState();
 
   useEffect(() => {
     const verifyCookie = async () => {

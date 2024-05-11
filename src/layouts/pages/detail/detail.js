@@ -4,13 +4,13 @@ import { fadeOut, scale } from "../../../assets/animation/animation";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaLocationDot, FaClock } from "react-icons/fa6";
 import Button from "../../../components/button";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
 
-const Detail = ({ user, status }) => {
+const Detail = ({ user }) => {
   const { eventId } = useParams();
   const userId = user._id;
   const [onLoading, setOnLoading] = useState(true);
