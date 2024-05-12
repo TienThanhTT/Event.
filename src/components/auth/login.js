@@ -15,11 +15,19 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://event-backend-b6gm.onrender.com/login",
-        formLogin,
-        { withCredentials: true }
-      );
+      // const response = await axios.post(
+      //   "https://event-backend-b6gm.onrender.com/login",
+      //   formLogin
+      // );
+
+      const response = fetch("https://event-backend-b6gm.onrender.com/login", {
+        method: "POST",
+        body: formLogin,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "same-origin",
+      });
 
       const { success, message } = response.data;
       console.log(response.data);
