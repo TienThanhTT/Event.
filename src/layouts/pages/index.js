@@ -12,7 +12,9 @@ const HomePages = ({ user, status }) => {
 
   useEffect(() => {
     const getEvent = async () => {
-      const response = await axios.get("/event/get_event/");
+      const response = await axios.get(
+        "https://event-backend-b6gm.onrender.com/event/get_event"
+      );
       const { success, events } = response.data;
 
       if (success) {

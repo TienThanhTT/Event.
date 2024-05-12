@@ -21,6 +21,7 @@ const Login = () => {
       );
 
       const { success, message } = response.data;
+      console.log(response.data);
       if (success === true) {
         navigate("/");
         window.location.reload();

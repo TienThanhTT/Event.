@@ -22,6 +22,7 @@ function App() {
       );
 
       const { status, user } = response.data;
+      console.log(response.data);
       if (status) {
         setStatus(status);
         setUser(user);
