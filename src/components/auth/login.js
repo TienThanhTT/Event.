@@ -15,29 +15,37 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const response = await axios.post(
-      //   "https://event-backend-b6gm.onrender.com/login",
-      //   formLogin
-      // );
+      const response = await axios.post(
+        "https://event-backend-b6gm.onrender.com/login",
+        formLogin,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "true",
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+          credentials: "same-origin",
+        }
+      );
 
-      fetch("https://event-backend-b6gm.onrender.com/login", {
-        method: "POST",
-        body: formLogin,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      }).then((data) => {
-        console.log(data);
-      });
+      const { success, message } = response.data;
+      console.log(response.data);
+      if (success === true) {
+        navigate("/");
 
-      // const { success, message } = response.data;
-      // console.log(response.data);
-      // if (success === true) {
-      //   navigate("/");
+        window.scroll(0, 0);
+      } else console.log(message);
 
-      //   window.scroll(0, 0);
-      // } else console.log(message);
+      // fetch("https://event-backend-b6gm.onrender.com/login", {
+      //   method: "POST",
+      //   body: formLogin,
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   credentials: "include",
+      // }).then((data) => {
+      //   console.log(data);
+      // });
     } catch (error) {
       console.log(error);
     }
