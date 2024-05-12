@@ -20,14 +20,17 @@ const Login = () => {
       //   formLogin
       // );
 
-      const response = fetch("https://event-backend-b6gm.onrender.com/login", {
-        method: "POST",
-        body: formLogin,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "same-origin",
-      });
+      const response = await fetch(
+        "https://event-backend-b6gm.onrender.com/login",
+        {
+          method: "POST",
+          body: formLogin,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "same-origin",
+        }
+      );
 
       const { success, message } = response.data;
       console.log(response.data);
