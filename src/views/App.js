@@ -18,8 +18,7 @@ function App() {
     const verifyCookie = async () => {
       const response = await axios.post(
         "https://event-backend-b6gm.onrender.com/",
-        {},
-        { withCredentials: true }
+        {}
       );
 
       const { status, user } = response.data;
