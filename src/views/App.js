@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const verifyCookie = async () => {
       const response = await axios.post(
-        "http://localhost:4000",
+        "https://event-backend-b6gm.onrender.com/",
         {},
         { withCredentials: true }
       );

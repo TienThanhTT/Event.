@@ -19,8 +19,7 @@ const Register = () => {
     try {
       const response = await axios.post(
         "https://event-backend-b6gm.onrender.com/signup",
-        formRegister,
-        { withCredentials: true }
+        formRegister
       );
 
       const { success } = response.data;

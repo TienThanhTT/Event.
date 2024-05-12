@@ -17,8 +17,7 @@ const Login = () => {
     try {
       const response = await axios.post(
         "https://event-backend-b6gm.onrender.com/login",
-        formLogin,
-        { withCredentials: true }
+        formLogin
       );
 
       const { success, message } = response.data;
