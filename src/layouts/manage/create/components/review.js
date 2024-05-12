@@ -9,7 +9,7 @@ import Button from "../../../../components/button";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useContext } from "react";
-import { AuthContext } from "../../../../service/auth/authContext";
+import { AuthContext } from "../../../../context/authContext";
 
 const Review = ({ eventData, image, uploadData }) => {
   const authContext = useContext(AuthContext);

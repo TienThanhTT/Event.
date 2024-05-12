@@ -13,7 +13,7 @@ const HomePages = ({ user, status }) => {
   useEffect(() => {
     const getEvent = async () => {
       const response = await axios.get(
-        "http://localhost:4000/event/get_event/",
+        "https://event-backend-b6gm.onrender.com/event/get_event/",
         {
           withCredentials: true,
         }

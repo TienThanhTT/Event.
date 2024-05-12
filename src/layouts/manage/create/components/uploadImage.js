@@ -5,28 +5,21 @@ import { fadeDown } from "../../../../assets/animation/animation";
 import { useState } from "react";
 
 const UPloadImage = ({ handleChange, next }) => {
-  const [image, setImage] = useState();
+  const [previewSource, setPreviewSource] = useState("");
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image);
-
-    // const response = await axios.post(
-    //   "http://localhost:4000/event/upload_image/",
-    //   formData,
-    //   {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   }
-    // );
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
   };
 
-  const onInputChange = (e) => {
-    console.log(e.target.files[0]);
-    setImage(e.target.files[0]);
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
   };
+
   return (
     <motion.div
       variants={fadeDown}
@@ -55,18 +48,29 @@ const UPloadImage = ({ handleChange, next }) => {
             id="banner"
             accept="image/*"
             name="banner"
-            onChange={onInputChange}
+            onChange={handleFileInputChange}
             formEncType="multipart/form-data"
             className="px-4 py-3 border border-gray-300 rounded-xl w-[900px]"
           />
         </div>
+      </div>
+      <div className=" flex justify-center items-center">
+        {previewSource ? (
+          <img
+            src={previewSource}
+            className=" w-[70%] lg:max-w-[700px]"
+            alt=""
+          />
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className="flex justify-end pt-8">
         <Button
           content={"Lưu lại và tiếp tục"}
           className={" px-6 py-4 rounded-lg text-white"}
-          onClick={onSubmit}
+          // onClick={handleSubmitFile}
         />
       </div>
     </motion.div>

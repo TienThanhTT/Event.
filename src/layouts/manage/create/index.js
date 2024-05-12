@@ -5,21 +5,11 @@ import Review from "./components/review";
 import { FaArrowLeft } from "react-icons/fa6";
 
 import { useContext } from "react";
-import { AuthContext } from "../../../service/auth/authContext";
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "../../../../image-event");
-//   },
-//   filename: (req, file, cb) => {
-//     const uniqueSuffix = Date.now();
-//     cb(null, uniqueSuffix + file.originalname);
-//   },
-// });
-// const upload = multer({ storage });
+import { AuthContext } from "../../../context/authContext";
+import axios from "axios";
 
 export default function CreatePage() {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState();
   const [step, setStep] = useState(1);
   const authContext = useContext(AuthContext);
 
@@ -47,19 +37,30 @@ export default function CreatePage() {
     setStep(step - 1);
   };
 
-  const onImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      let img = e.target.files[0];
-      setImage(URL.createObjectURL(img));
-    }
+  const onImageInputChange = (e) => {
+    setImage(e.target.files[0]);
   };
 
   const uploadEventData = async (e) => {
     e.preventDefault();
     try {
-      // const response = await axios.post("http://localhost:4000/event/create", {
-      //   ...eventData,
-      // });
+      const Image = new FormData();
+      Image.append("image", image);
+      const UrlImage = await axios.post(
+        "https://event-backend-b6gm.onrender.com/event/upload_image/",
+        Image,
+        { withCredentials: true }
+      );
+      const { success, url } = UrlImage.data;
+      if (success) {
+        setEventData({ banner: url });
+      }
+      // const response = await axios.post(
+      //   "https://event-backend-b6gm.onrender.com/event/create",
+      //   {
+      //     ...eventData,
+      //   }
+      // );
       // const data = response.data;
 
       console.log(eventData);
@@ -88,7 +89,11 @@ export default function CreatePage() {
           next={next}
         />
       ) : step === 2 ? (
-        <UPloadImage emage={image} handleChange={onImageChange} next={next} />
+        <UPloadImage
+          emage={image}
+          handleChange={onImageInputChange}
+          next={next}
+        />
       ) : (
         <Review
           eventData={eventData}

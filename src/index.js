@@ -5,7 +5,7 @@ import App from "./views/App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "react-toastify/ReactToastify.css";
-import { AuthProvider } from "./service/auth/authContext";
+import { AuthProvider } from "./context/authContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

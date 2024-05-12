@@ -31,7 +31,7 @@ const Detail = ({ user }) => {
   useEffect(() => {
     const getEvent = async () => {
       const response = await axios.post(
-        "http://localhost:4000/event/get_detail/",
+        "https://event-backend-b6gm.onrender.com/event/get_detail/",
         { eventId },
         { withCredentials: true }
       );
