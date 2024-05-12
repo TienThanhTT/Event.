@@ -26,7 +26,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "same-origin",
+        credentials: "include",
       }).then((data) => {
         console.log(data);
       });
