@@ -20,25 +20,24 @@ const Login = () => {
       //   formLogin
       // );
 
-      const response = await fetch(
-        "https://event-backend-b6gm.onrender.com/login",
-        {
-          method: "POST",
-          body: formLogin,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "same-origin",
-        }
-      );
+      fetch("https://event-backend-b6gm.onrender.com/login", {
+        method: "POST",
+        body: formLogin,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "same-origin",
+      }).then((data) => {
+        console.log(data);
+      });
 
-      const { success, message } = response.data;
-      console.log(response.data);
-      if (success === true) {
-        navigate("/");
+      // const { success, message } = response.data;
+      // console.log(response.data);
+      // if (success === true) {
+      //   navigate("/");
 
-        window.scroll(0, 0);
-      } else console.log(message);
+      //   window.scroll(0, 0);
+      // } else console.log(message);
     } catch (error) {
       console.log(error);
     }
