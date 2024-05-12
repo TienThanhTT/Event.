@@ -25,9 +25,12 @@ const CreateGroup = ({ user }) => {
   const uploadGroupData = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post("http://localhost:4000/group/create", {
-        ...groupData,
-      });
+      const response = await axios.post(
+        "https://event-backend-b6gm.onrender.com/group/create",
+        {
+          ...groupData,
+        }
+      );
       const { success, message } = response.data;
       if (success) {
         handleSuccess(message);

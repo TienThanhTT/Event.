@@ -18,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/signup",
+        "https://event-backend-b6gm.onrender.com/signup",
         formRegister,
         { withCredentials: true }
       );
