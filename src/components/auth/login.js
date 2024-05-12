@@ -24,7 +24,7 @@ const Login = () => {
       console.log(response.data);
       if (success === true) {
         navigate("/");
-        window.location.reload();
+
         window.scroll(0, 0);
       } else console.log(message);
     } catch (error) {
