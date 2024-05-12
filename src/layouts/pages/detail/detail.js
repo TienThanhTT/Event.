@@ -32,8 +32,7 @@ const Detail = ({ user }) => {
     const getEvent = async () => {
       const response = await axios.post(
         "https://event-backend-b6gm.onrender.com/event/get_detail/",
-        { eventId },
-        { withCredentials: true }
+        { eventId }
       );
       const { success, event, ownerInf } = response.data;
 

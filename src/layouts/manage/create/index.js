@@ -48,8 +48,7 @@ export default function CreatePage() {
       Image.append("image", image);
       const UrlImage = await axios.post(
         "https://event-backend-b6gm.onrender.com/event/upload_image/",
-        Image,
-        { withCredentials: true }
+        Image
       );
       const { success, url } = UrlImage.data;
       if (success) {

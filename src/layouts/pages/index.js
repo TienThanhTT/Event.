@@ -12,9 +12,7 @@ const HomePages = ({ user, status }) => {
 
   useEffect(() => {
     const getEvent = async () => {
-      const response = await axios.get("/event/get_event/", {
-        withCredentials: true,
-      });
+      const response = await axios.get("/event/get_event/");
       const { success, events } = response.data;
 
       if (success) {
