@@ -28,7 +28,7 @@ const RegistedEvent = () => {
     const getEvent = async () => {
       await axios
         .post(
-          "https://event-backend-b6gm.onrender.com/event/get_event",
+          "https://event-backend-b6gm.onrender.com/event/registed_event",
           // "http://localhost:4000/event/registed_event",
           { userId }
         )
