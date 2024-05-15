@@ -5,6 +5,7 @@ import axios from "axios";
 
 import ManageCard from "../components/manageCard";
 import { toast } from "react-toastify";
+import Card from "../../../components/card";
 
 const RegistedEvent = () => {
   const [listEvent, setListEvent] = useState([]);
@@ -71,7 +72,7 @@ const RegistedEvent = () => {
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-y-16 md:gap-4 lg:gap-8">
           {listEvent.map((data, index) => {
             return (
-              <ManageCard
+              <Card
                 img={data ? data.banner : ""}
                 title={data ? data.title : ""}
                 day={data ? data.date : ""}
