@@ -12,7 +12,7 @@ const EventManage = () => {
   useEffect(() => {
     const getEvent = async () => {
       const response = await axios.post(
-        "https://event-backend-b6gm.onrender.com/event/get_detail/",
+        "https://event-backend-b6gm.onrender.com/event/get_detail",
         // "http://localhost:4000/event/get_participant",
         eventId
       );
