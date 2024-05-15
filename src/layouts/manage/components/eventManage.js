@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const EventManage = () => {
   const eventId = useParams();
-  const [onLoading, setOnLoading] = useState(true);
+
   const [registeredUsers, setRegisteredUsers] = useState([]);
   const [registeredGroups, setRegisteredGroups] = useState([]);
   const [event, setEvent] = useState();
@@ -20,7 +20,6 @@ const EventManage = () => {
         response.data;
 
       if (success) {
-        setOnLoading(false);
         setRegisteredUsers(registeredUsers);
         setRegisteredGroups(registeredGroups);
         setEvent(event);
@@ -39,7 +38,8 @@ const EventManage = () => {
         <div className="bg-white shadow-md rounded-md overflow-hidden col-span-6">
           <div className="bg-gray-100 py-2 px-4">
             <h2 className="text-xl font-semibold text-gray-800">
-              Danh sách người tham gia( {registeredUsers.length} )
+              Danh sách người tham gia({" "}
+              {registeredUsers ? registeredUsers.length : ""} )
             </h2>
           </div>
           <ul className="divide-y divide-gray-200">
