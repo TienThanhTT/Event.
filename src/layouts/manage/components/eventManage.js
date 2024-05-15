@@ -12,7 +12,7 @@ const EventManage = () => {
   useEffect(() => {
     const getEvent = async () => {
       const response = await axios.post(
-        "https://event-backend-b6gm.onrender.com/event/get_detail",
+        "https://event-backend-b6gm.onrender.com/event/get_participant",
         // "http://localhost:4000/event/get_participant",
         eventId
       );
@@ -75,28 +75,32 @@ const EventManage = () => {
               Danh sách nhóm tham gia( {registeredGroups.length} )
             </h2>
           </div>
-          <ul className="divide-y divide-gray-200">
-            {registeredGroups.map((group) => {
-              return (
-                <li className="flex items-center py-4 px-6">
-                  <img
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                    src={
-                      group.avatar
-                        ? group.avatar
-                        : "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                    }
-                    alt="User avatar"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      {group.name}
-                    </h3>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          {registeredUsers ? (
+            <ul className="divide-y divide-gray-200">
+              {registeredGroups.map((group) => {
+                return (
+                  <li className="flex items-center py-4 px-6">
+                    <img
+                      className="w-12 h-12 rounded-full object-cover mr-4"
+                      src={
+                        group.avatar
+                          ? group.avatar
+                          : "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                      }
+                      alt="User avatar"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-medium text-gray-800">
+                        {group.name}
+                      </h3>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            "loading"
+          )}
         </div>
       </div>
     </>
