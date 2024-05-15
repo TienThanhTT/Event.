@@ -47,8 +47,8 @@ export default function ProfilePage() {
   const handleUpdate = async () => {
     try {
       const response = await axios.post(
-        // "https://event-backend-b6gm.onrender.com/update_user"
-        "http://localhost:4000/update_user",
+        "https://event-backend-b6gm.onrender.com/update_user",
+        // "http://localhost:4000/update_user",
         formUpdate
       );
       const { success, message } = response.data;
