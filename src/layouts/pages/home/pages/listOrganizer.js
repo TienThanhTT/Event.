@@ -1,4 +1,4 @@
-import OrganizerCard from "../../../components/organizer";
+import OrganizerCard from "../../../../components/organizer";
 
 const OrganizerData = [
   {

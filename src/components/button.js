@@ -19,12 +19,12 @@ const Button = ({
       whileInView={"visible"}
       whileHover={"hover"}
       transition={{ type: "spring" }}
-      className={className + " rounded-full bg-primary "}
+      className={className + " rounded-full bg-primary  "}
       onClick={onClick}
     >
       <Link
         to={link}
-        className=" font-medium text-center flex items-center gap-2 cursor-pointer justify-center z-0"
+        className=" font-medium text-center flex items-center gap-2 cursor-pointer justify-center z-0 text-white"
       >
         {isFrontIcon ? <div>{icon}</div> : <></>}
         {content}

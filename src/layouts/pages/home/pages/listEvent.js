@@ -1,9 +1,9 @@
-import Button from "../../../components/button";
+import Button from "../../../../components/button";
 import { FaArrowRight } from "react-icons/fa";
 
-import Card from "../../../components/card";
+import Card from "../../../../components/card";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../../assets/animation/animation";
+import { fadeIn } from "../../../../assets/animation/animation";
 
 const ListEvent = ({ ListMusicEvent }) => {
   return (
@@ -17,27 +17,17 @@ const ListEvent = ({ ListMusicEvent }) => {
             transition={{ type: "spring" }}
             className="text-[20px] text-[#0B1223] font-bold lg:text-[40px]"
           >
-            Music Event
+            EVENT
           </motion.div>
-          <div className="hidden lg:block">
-            <Button
-              content="More Events"
-              width="max-w-[188px]"
-              className={"bg-[#3B52FF] text-white"}
-              isBackIcon={true}
-              icon={<FaArrowRight />}
-              link="#"
-            />
-          </div>
         </div>
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-y-16 md:gap-4 lg:gap-8">
           {ListMusicEvent.map((data) => {
             return (
               <Card
-                img={data.img}
+                img={data.banner}
                 title={data.title}
-                day={data.day}
-                time={data.time}
+                day={data.date}
+                time={data.startTime}
                 location={data.location}
                 follower={data.group}
                 link={`/event/detail/${data._id}`}

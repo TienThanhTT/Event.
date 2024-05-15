@@ -39,7 +39,7 @@ const Review = ({ eventData, image, uploadData }) => {
           </div>
           <div className=" flex flex-col gap-8">
             <p className="text-[50px] leading [55px] font-extrabold">
-              {eventData.title}
+              {eventData ? eventData.title : ""}
             </p>
             <div className="flex justify-between">
               <motion.div
@@ -55,11 +55,11 @@ const Review = ({ eventData, image, uploadData }) => {
                 </p>
                 <p className="flex gap-2 pt-4 items-center">
                   <FaCalendarAlt />
-                  {eventData.date}
+                  {eventData ? eventData.date : ""}
                 </p>
                 <p className="flex gap-2 items-center">
                   <FaClock />
-                  {eventData.startTime}
+                  {eventData ? eventData.startTime : ""}
                 </p>
               </motion.div>
               <div>
@@ -82,7 +82,8 @@ const Review = ({ eventData, image, uploadData }) => {
               </p>
               <p className="flex gap-2 pt-4 items-center">
                 <FaLocationDot />
-                {eventData.location}
+
+                {eventData ? eventData.location : ""}
               </p>
             </motion.div>
             <motion.div
@@ -101,17 +102,15 @@ const Review = ({ eventData, image, uploadData }) => {
                   <img alt="" />
                 </div>
                 <div className=" flex flex-col gap-2 items-center">
-                  <p className="text-[20px] font-bold">{authContext.name}</p>
-                  <Button
-                    content={"Follow"}
-                    className={"p-0 bg-[#3B52FF] text-white"}
-                  />
+                  <p className="text-[20px] font-bold">
+                    {authContext ? authContext.name : ""}
+                  </p>
                 </div>
               </div>
             </motion.div>
             <motion.div className="flex flex-col gap-2 pt-4 px-8 py-4 ">
               <p className=" text-[25px] leading-[25px] font-bold">Mô tả</p>
-              <p className="">{eventData.description}</p>
+              <p className="">{eventData ? eventData.description : ""}</p>
             </motion.div>
           </div>
         </section>

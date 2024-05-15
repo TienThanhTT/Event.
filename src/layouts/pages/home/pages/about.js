@@ -1,9 +1,9 @@
-import Button from "../../../components/button";
+import Button from "../../../../components/button";
 import { FaArrowRight } from "react-icons/fa";
-import ShadowImage from "../../../components/shadowImage";
+import ShadowImage from "../../../../components/shadowImage";
 import Img from "../../../assets/about/img.png";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../../assets/animation/animation";
+import { fadeIn } from "../../../../assets/animation/animation";
 
 const About = () => {
   return (

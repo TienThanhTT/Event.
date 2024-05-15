@@ -8,6 +8,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const FooterNav = ["home", "blog", "contact us"];
 
@@ -22,7 +23,11 @@ const Footer = () => {
       >
         <div className="col-span-6 flex flex-col gap-8">
           <div className="">
-            <img src={logo} alt="" />
+            <Link to={"/"}>
+              <span className=" text-[45px] font-bold text-white uppercase font-serif ">
+                event.
+              </span>
+            </Link>
           </div>
           <div className="flex gap-4">
             {FooterNav.map((data, index) => (

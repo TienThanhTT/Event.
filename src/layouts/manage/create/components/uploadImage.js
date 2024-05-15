@@ -2,24 +2,14 @@ import Button from "../../../../components/button";
 import progress from "../../../../assets/manage/create/BannerProgress.png";
 import { motion } from "framer-motion";
 import { fadeDown } from "../../../../assets/animation/animation";
-import { useState } from "react";
 
-const UPloadImage = ({ handleChange, next }) => {
-  const [previewSource, setPreviewSource] = useState("");
-
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    previewFile(file);
-  };
-
-  const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
-
+const UPloadImage = ({
+  handleChange,
+  handleInputChange,
+  previewSource,
+  imageUrl,
+  next,
+}) => {
   return (
     <motion.div
       variants={fadeDown}
@@ -47,8 +37,8 @@ const UPloadImage = ({ handleChange, next }) => {
             placeholder="Tên sự kiện"
             id="banner"
             accept="image/*"
-            name="banner"
-            onChange={handleFileInputChange}
+            name="image"
+            onChange={handleInputChange}
             formEncType="multipart/form-data"
             className="px-4 py-3 border border-gray-300 rounded-xl w-[900px]"
           />
@@ -70,7 +60,7 @@ const UPloadImage = ({ handleChange, next }) => {
         <Button
           content={"Lưu lại và tiếp tục"}
           className={" px-6 py-4 rounded-lg text-white"}
-          // onClick={handleSubmitFile}
+          onClick={next}
         />
       </div>
     </motion.div>

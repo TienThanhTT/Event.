@@ -4,79 +4,31 @@ const routes = [
   {
     path: "/app/dashboard", // the url
     icon: "HomeIcon", // the component being exported from icons/index.js
-    name: "Dashboard", // name that appear in Sidebar
+    name: "Sự kiện", // name that appear in Sidebar
   },
   {
     path: "/app/forms",
     icon: "FormsIcon",
-    name: "Forms",
+    name: "Sự kiện đăng ký",
   },
   {
     path: "/app/cards",
     icon: "CardsIcon",
-    name: "Cards",
-  },
-  {
-    path: "/app/charts",
-    icon: "ChartsIcon",
-    name: "Charts",
-  },
-  {
-    path: "/app/buttons",
-    icon: "ButtonsIcon",
-    name: "Buttons",
-  },
-  {
-    path: "/app/modals",
-    icon: "ModalsIcon",
-    name: "Modals",
-  },
-  {
-    path: "/app/tables",
-    icon: "TablesIcon",
-    name: "Tables",
-  },
-  {
-    icon: "PagesIcon",
-    name: "Pages",
-    routes: [
-      // submenu
-      {
-        path: "/login",
-        name: "Login",
-      },
-      {
-        path: "/create-account",
-        name: "Create account",
-      },
-      {
-        path: "/forgot-password",
-        name: "Forgot password",
-      },
-      {
-        path: "/app/404",
-        name: "404",
-      },
-      {
-        path: "/app/blank",
-        name: "Blank",
-      },
-    ],
+    name: "Nhóm",
   },
 ];
 
 function Sidebar() {
   return (
-    <div className="py-4 text-gray-500 dark:text-gray-400 bg-[#222222]">
-      <Link
-        className="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
-        to="#"
-      >
-        Windmill
+    <div className="py-4 text-gray-500 bg-white shadow-md ">
+      <Link to={"/"} className=" px-5">
+        <span className=" text-[30px] font-bold text-[#222222] uppercase font-serif ">
+          event.
+        </span>
       </Link>
       <ul className="mt-6">
         {routes.map((route) => (
-          <li className="relative px-6 py-3" key={route.name}>
+          <li className="relative py-3" key={route.name}>
             <NavLink
               exact
               to={route.path}
@@ -88,7 +40,6 @@ function Sidebar() {
           </li>
         ))}
       </ul>
-      <div className="px-6 my-6">button</div>
     </div>
   );
 }

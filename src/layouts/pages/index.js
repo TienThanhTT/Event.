@@ -1,39 +1,19 @@
-import Banner from "./home/banner";
-import ListEvent from "./home/listEvent";
+import { Route, Routes } from "react-router-dom";
+import Footer from "../footer/footer";
+import Navbar from "../header/navbar";
+import HomePages from "./home";
+import ProfilePage from "../manage/pages/profile";
+import Detail from "./detail/detail";
+import CategoryDetail from "../manage/components/category_detail";
 
-import Search from "./home/search";
-import Category from "./home/category";
-import About from "./home/about";
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-const HomePages = ({ user, status }) => {
-  const [listMusicEvent, setListMusicEvent] = useState([]);
-
-  useEffect(() => {
-    const getEvent = async () => {
-      const response = await axios.get(
-        "https://event-backend-b6gm.onrender.com/event/get_event"
-      );
-      const { success, events } = response.data;
-
-      if (success) {
-        setListMusicEvent(events);
-      }
-    };
-
-    getEvent();
-  }, [setListMusicEvent]);
-
+const Home = () => {
   return (
     <>
-      <Banner />
-      <Search />
-      <Category />
-      <About />
-      <ListEvent ListMusicEvent={listMusicEvent} />
-      {/* <ListOrganizer /> */}
+      <Routes>
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/category/:categoryId" element={<CategoryDetail />} />
+      </Routes>
     </>
   );
 };
-export default HomePages;
+export default Home;

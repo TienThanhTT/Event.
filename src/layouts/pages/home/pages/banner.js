@@ -1,7 +1,7 @@
-import Button from "../../../components/button";
+import Button from "../../../../components/button";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { fadeDown } from "../../../assets/animation/animation";
+import { fadeDown } from "../../../../assets/animation/animation";
 
 const Banner = () => {
   return (
@@ -33,7 +33,7 @@ const Banner = () => {
             className={" bg-light_red rounded-lg text-white px-8 py-4"}
             isBackIcon={true}
             icon={<FaArrowRight />}
-            link="#"
+            link="/manage/create"
           />
         </div>
       </div>

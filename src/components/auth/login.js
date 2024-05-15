@@ -1,11 +1,49 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../button";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/authContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [formLogin, setFormLogin] = useState();
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
+  const [user, setUser] = useState();
+  const [status, setStatus] = useState();
+  useEffect(() => {
+    const verifyCookie = async () => {
+      const response = await axios.post(
+        "https://event-backend-b6gm.onrender.com/",
+        {},
+        { withCredentials: true }
+      );
+
+      const { status, user } = response.data;
+
+      if (status) {
+        setStatus(status);
+        setUser(user);
+      }
+    };
+    verifyCookie();
+  }, []);
+
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-right",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "top-right",
+    });
+
+  useEffect(() => {
+    if (status) {
+      navigate("/");
+      handleError("Bạn đã đăng nhập rồi!");
+    }
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { fadeUp } from "../../../assets/animation/animation";
-import Button from "../../../components/button";
+import { fadeUp } from "../../../../assets/animation/animation";
+import Button from "../../../../components/button";
 
 const Search = () => {
   return (

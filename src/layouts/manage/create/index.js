@@ -7,19 +7,46 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/authContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function CreatePage() {
   const [image, setImage] = useState();
   const [step, setStep] = useState(1);
+  const [eventData, setEventData] = useState();
+  const [previewSource, setPreviewSource] = useState("");
   const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (authContext) {
       setEventData({ owner: authContext._id });
+    } else {
+      navigate("/auth/login");
     }
   }, [authContext]);
-  const [eventData, setEventData] = useState();
 
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-right",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "top-right",
+    });
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    previewFile(file);
+  };
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEventData({ ...eventData, [name]: value });
@@ -37,12 +64,7 @@ export default function CreatePage() {
     setStep(step - 1);
   };
 
-  const onImageInputChange = (e) => {
-    setImage(e.target.files[0]);
-  };
-
-  const uploadEventData = async (e) => {
-    e.preventDefault();
+  const uploadImage = async () => {
     try {
       const Image = new FormData();
       Image.append("image", image);
@@ -50,30 +72,48 @@ export default function CreatePage() {
         "https://event-backend-b6gm.onrender.com/event/upload_image/",
         Image
       );
-      const { success, url } = UrlImage.data;
+      const { success, data } = UrlImage.data;
       if (success) {
-        setEventData({ banner: url });
+        setEventData({ ...eventData, banner: data });
+        window.scrollTo(0, 0);
+        setStep(step + 1);
       }
-      // const response = await axios.post(
-      //   "https://event-backend-b6gm.onrender.com/event/create",
-      //   {
-      //     ...eventData,
-      //   }
-      // );
-      // const data = response.data;
-
-      console.log(eventData);
     } catch (error) {
       console.log(error);
     }
-    console.log(eventData);
+  };
+
+  const uploadEventData = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://event-backend-b6gm.onrender.com/event/create",
+
+        eventData
+      );
+      const { success, message, event } = response.data;
+
+      if (success) {
+        handleSuccess(message);
+        navigate(`/event/detail/${event._id}`);
+      } else {
+        handleError(message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="container">
       <div className="flex gap-12 items-center pt-24">
         {step === 1 ? (
-          <></>
+          <FaArrowLeft
+            fontSize={"30px"}
+            onClick={() => {
+              navigate("/");
+            }}
+          />
         ) : (
           <FaArrowLeft fontSize={"30px"} onClick={previous} />
         )}
@@ -90,13 +130,15 @@ export default function CreatePage() {
       ) : step === 2 ? (
         <UPloadImage
           emage={image}
-          handleChange={onImageInputChange}
-          next={next}
+          handleChange={handleChange}
+          handleInputChange={handleFileInputChange}
+          previewSource={previewSource}
+          next={uploadImage}
         />
       ) : (
         <Review
           eventData={eventData}
-          image={image}
+          image={previewSource}
           uploadData={uploadEventData}
         />
       )}

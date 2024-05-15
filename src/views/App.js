@@ -1,71 +1,50 @@
 import { Route, Routes } from "react-router-dom";
-import HomePages from "../layouts/pages";
-import Detail from "../layouts/pages/detail/detail";
 import CreatePage from "../layouts/manage/create";
 import Dashboard from "../layouts/manage/dashboard";
 import Register from "../components/auth/register";
 import Login from "../components/auth/login";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Footer from "../layouts/footer/footer";
+import CreateGroup from "../layouts/manage/pages/createGroup";
+import CategoryDetail from "../layouts/manage/components/category_detail";
+import { ToastContainer } from "react-toastify";
+
+import Detail from "../layouts/pages/detail/detail";
 import Navbar from "../layouts/header/navbar";
-import CreateGroup from "../components/createGroup";
+import Footer from "../layouts/footer/footer";
+import HomePages from "../layouts/pages/home";
+import ProfilePage from "../layouts/manage/pages/profile";
+import ManageDetail from "../layouts/manage/components/manageDetail";
+import EventManage from "../layouts/manage/components/eventManage";
+
 function App() {
-  const [user, setUser] = useState();
-  const [status, setStatus] = useState();
-
-  useEffect(() => {
-    const verifyCookie = async () => {
-      const response = await axios.post(
-        "https://event-backend-b6gm.onrender.com/",
-        {},
-        { withCredentials: true }
-      );
-
-      const { status, user } = response.data;
-      console.log(response.data);
-      if (status) {
-        setStatus(status);
-        setUser(user);
-      }
-    };
-    verifyCookie();
-  }, []);
   return (
     <div className="App">
-      <Navbar user={user} status={status} />
-      <Routes path="/">
-        <Route path="/" element={<HomePages user={user} status={status} />} />
-        <Route path="/event">
-          <Route
-            path="/event/detail/:eventId"
-            element={<Detail user={user} />}
-          />
-        </Route>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePages />} />
+        <Route path="/manage" element={<Dashboard />} />
+        <Route path="/manage/create" element={<CreatePage />} />
+        <Route
+          path="/manage/manage_detail/:eventId"
+          element={<ManageDetail />}
+        />
+        <Route path="/manage/event/:eventId" element={<EventManage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/category/:categoryId" element={<CategoryDetail />} />
 
-        <Route path="/manage">
-          <Route path="/manage/" element={<Dashboard />} />
-          <Route
-            path="/manage/create"
-            element={<CreatePage user={user} status={status} />}
-          />
-        </Route>
         <Route path="/auth">
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
         </Route>
+
+        <Route path="/event/detail/:eventId" element={<Detail />} />
+
         <Route path="/group">
-          <Route path="/group/create" element={<CreateGroup user={user} />} />
+          <Route path="/group/create" element={<CreateGroup />} />
         </Route>
       </Routes>
-
-      {/* <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>{" "} */}
       <Footer />
+
+      <ToastContainer />
     </div>
   );
 }
