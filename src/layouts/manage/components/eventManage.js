@@ -42,28 +42,32 @@ const EventManage = () => {
               {registeredUsers ? registeredUsers.length : ""} )
             </h2>
           </div>
-          <ul className="divide-y divide-gray-200">
-            {registeredUsers.map((user) => {
-              return (
-                <li className="flex items-center py-4 px-6">
-                  <img
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                    src={
-                      user.avatar
-                        ? user.avatar
-                        : "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                    }
-                    alt="User avatar"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium text-gray-800">
-                      {user.name}
-                    </h3>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          {registeredUsers ? (
+            <ul className="divide-y divide-gray-200">
+              {registeredUsers.map((user) => {
+                return (
+                  <li className="flex items-center py-4 px-6">
+                    <img
+                      className="w-12 h-12 rounded-full object-cover mr-4"
+                      src={
+                        user.avatar
+                          ? user.avatar
+                          : "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                      }
+                      alt="User avatar"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-medium text-gray-800">
+                        {user.name}
+                      </h3>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            "loading"
+          )}
         </div>
         <div className="bg-white shadow-md rounded-md overflow-hidden  col-span-6">
           <div className="bg-gray-100 py-2 px-4">
