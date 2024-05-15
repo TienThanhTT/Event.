@@ -30,8 +30,8 @@ const OwnedEvent = () => {
     const getEvent = async () => {
       await axios
         .post(
-          // "https://event-backend-b6gm.onrender.com/event/get_event"
-          "http://localhost:4000/event/user_owned_event",
+          "https://event-backend-b6gm.onrender.com/event/user_owned_event",
+          // "http://localhost:4000/event/user_owned_event",
           { userId }
         )
         .then((res) => {

@@ -17,7 +17,7 @@ const OwnedGroup = () => {
   useEffect(() => {
     const getGroup = async () => {
       const response = await axios
-        .post("http://localhost:4000/group/get_group", userId)
+        .post("https://event-backend-b6gm.onrender.com/group/get_group", userId)
         .then((res) => {
           const { success, groups } = res.data;
           if (success) {
