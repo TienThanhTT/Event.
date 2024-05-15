@@ -12,7 +12,7 @@ const HomePages = () => {
   useEffect(() => {
     const getEvent = async () => {
       const response = await axios.get(
-        "https://event-backend-b6gm.onrender.com/event/get_event"
+        "https://event-backend-b6gm.onrender.com/event/show_event"
         // "http://localhost:4000/event/show_event"
       );
       const { success, events } = response.data;

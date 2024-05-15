@@ -11,7 +11,7 @@ const CategoryDetail = () => {
   useEffect(() => {
     const getCategoryEvent = async () => {
       const response = await axios.post(
-        "event/update_event/event/get_event",
+        "https://event-backend-b6gm.onrender.com/event/get_event",
         { categoryId },
         {
           withCredentials: true,
