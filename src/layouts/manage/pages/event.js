@@ -32,7 +32,7 @@ const OwnedEvent = () => {
         .post(
           "https://event-backend-b6gm.onrender.com/event/user_owned_event",
           // "http://localhost:4000/event/user_owned_event",
-          userId
+          { userId }
         )
         .then((res) => {
           const { success, events } = res.data;
